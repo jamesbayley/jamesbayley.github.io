@@ -1,0 +1,23 @@
+{
+	"name": "autobiography",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { "VARIANT": "18-bullseye" }
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"ritwickdey.liveserver"
+			],
+			"settings": {
+				"liveServer.settings.port": 8080
+			}
+		}
+	},
+	"forwardPorts": [ "8080" ],
+	"remoteUser": "node",
+	"features": {
+		"git": "latest"
+	}
+}
