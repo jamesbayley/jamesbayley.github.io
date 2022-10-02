@@ -4,6 +4,7 @@
 		"dockerfile": "Dockerfile",
 		"args": { "VARIANT": "18-bullseye" }
 	},
+	"runArgs": ["--name", "autobiography"],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -15,7 +16,7 @@
 			}
 		}
 	},
-	"forwardPorts": [ "8080" ],
+	"forwardPorts": [ 8080 ],
 	"remoteUser": "node",
 	"features": {
 		"git": "latest"
