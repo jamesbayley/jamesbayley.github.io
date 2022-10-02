@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300&display=swap');
+
+:root {
+    --primary-color: #E9AAC1;
+    --secondary-color: #FCEDD7;
+}
+
+:root { 
+    --perimeter-padding: 1.5rem;
+    --header-height: 4rem;
+    --footer-height: 3rem;
+    --main-height: calc(100vh - var(--header-height) - var(--footer-height) - calc(2 * var(--perimeter-padding)));
+    --banner-height: calc(var(--main-height) - 1.75rem);
+}
+
+:root {
+    font-size: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:focus { 
+    opacity: 0.6;
+}
+
+a:active { 
+    opacity: 0.4;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: var(--perimeter-padding);
+    background-color: var(--bg-color);
+}
+
+header,
+footer { 
+    z-index: 999;
+}
+
+main,
+header {
+    align-items: center;
+}
+
+main,
+header,
+header > ul {
+    display: flex; 
+}
+
+p,
+footer,
+header > ul > li > a { 
+    color: var(--font-color);
+    font-family: 'Roboto', Helvetica, Sans-Serif;
+}
+
+header,
+footer,
+.banner { 
+    width: 100%;
+}
+
+footer,
+.banner { 
+    text-align: center;
+}
+
+header { 
+    height: var(--header-height);
+    justify-content: end;
+    padding-inline: 3rem;
+}
+
+header > ul { 
+    list-style: none;
+    column-gap: 3.5rem;
+    font-size: max(1.3rem, min(1.75rem, 1.75vw));
+}
+
+main { 
+    flex-direction: column;
+    justify-content: center;
+    height: var(--main-height);
+}
+
+footer { 
+    left: 0;
+    bottom: var(--perimeter-padding);
+    position: fixed;
+    height: var(--footer-height);
+    line-height: var(--footer-height);
+    font-size: max(1rem, min(1.3rem, 1.4vw));
+    /* background-color: var(--primary-color); */
+}
+
+h1 { 
+    font-size: max(3vw, 3rem);
+    font-family: 'Fredericka the Great';
+}
+
+p {
+    max-width: 55vw;
+    max-height: 95%;
+    text-align: justify;
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+p::-webkit-scrollbar {
+    display: none;
+}
+
+h1,
+p {
+    color: var(--font-color);
+}
+
+@media (prefers-color-scheme: light) {
+    :root { 
+        --bg-color: #f4f4f4;
+        --font-color: #333333;
+    }
+
+    footer {
+        color: var(--font-color);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root { 
+        --bg-color: #333333;
+        --font-color: #f4f4f4;
+    }
+
+    footer { 
+        color: var(--bg-color);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    p {
+        font-size: 1.5rem;
+        line-height: 3rem;
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    p {
+        font-size: 1.4rem;
+        line-height: 3rem;
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        justify-content: end;
+    }
+
+    p {
+        font-size: 1.2rem;
+        line-height: 2.4rem;
+        max-width: 90%;
+    }
+}
