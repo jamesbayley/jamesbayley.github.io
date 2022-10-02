@@ -1,21 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300&display=swap');
 
+/* Colour theme. */
+
 :root {
     --primary-color: #E9AAC1;
     --secondary-color: #FCEDD7;
 }
 
-:root { 
-    --perimeter-padding: 1.5rem;
-    --header-height: 4rem;
-    --footer-height: 3rem;
-    --main-height: calc(100vh - var(--header-height) - var(--footer-height) - calc(2 * var(--perimeter-padding)));
-    --banner-height: calc(var(--main-height) - 1.75rem);
+@media (prefers-color-scheme: light) {
+    :root { 
+        --bg-color: #f4f4f4;
+        --font-color: #333333;
+    }
 }
 
-:root {
-    font-size: 10px;
+@media (prefers-color-scheme: dark) {
+    :root { 
+        --bg-color: #333333;
+        --font-color: #f4f4f4;
+    }
 }
+
+
+/* CSS resets. */
 
 * {
     margin: 0;
@@ -27,6 +34,29 @@ a {
     text-decoration: none;
 }
 
+
+/* Default font size for REM dimensions. */
+
+:root {
+    font-size: 10px;
+}
+
+
+/* Hide scrollbars across browsers. */ 
+
+p::-webkit-scrollbar {
+    display: none;
+}
+
+p {
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+
+/* Anchor tag effects. */
+
 a:hover,
 a:focus { 
     opacity: 0.6;
@@ -34,6 +64,16 @@ a:focus {
 
 a:active { 
     opacity: 0.4;
+}
+
+
+
+:root { 
+    --perimeter-padding: 1.5rem;
+    --header-height: 4rem;
+    --footer-height: 3rem;
+    --main-height: calc(100vh - var(--header-height) - var(--footer-height) - calc(2 * var(--perimeter-padding)));
+    --banner-height: calc(var(--main-height) - 1.75rem);
 }
 
 body {
@@ -115,40 +155,13 @@ p {
     text-align: justify;
     font-size: 1.6rem;
     line-height: 3.2rem;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
 }
 
-p::-webkit-scrollbar {
-    display: none;
-}
+
 
 h1,
 p {
     color: var(--font-color);
-}
-
-@media (prefers-color-scheme: light) {
-    :root { 
-        --bg-color: #f4f4f4;
-        --font-color: #333333;
-    }
-
-    footer {
-        color: var(--font-color);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root { 
-        --bg-color: #333333;
-        --font-color: #f4f4f4;
-    }
-
-    footer { 
-        color: var(--bg-color);
-    }
 }
 
 @media screen and (max-width: 900px) {
