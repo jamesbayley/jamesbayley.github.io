@@ -102,7 +102,6 @@ footer {
     height: var(--footer-height);
     line-height: var(--footer-height);
     font-size: max(1rem, min(1.3rem, 1.4vw));
-    /* background-color: var(--primary-color); */
 }
 
 h1 { 

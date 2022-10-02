@@ -1,8 +1,9 @@
 {
     "include": [ "src" ],
+    "exclude": [ "build" ],
     "compilerOptions": {
         "target": "ES2020",
-        "outDir": "./static/build/",
+        "outDir": "build",
         "strict": true
     }
 }
