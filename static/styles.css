@@ -67,26 +67,63 @@ a:active {
 }
 
 
+/* Custom property declarations. */
 
-:root { 
-    --perimeter-padding: 1.5rem;
+:root {
+    --body-padding: 1.5rem;
     --header-height: 4rem;
-    --footer-height: 3rem;
-    --main-height: calc(100vh - var(--header-height) - var(--footer-height) - calc(2 * var(--perimeter-padding)));
-    --banner-height: calc(var(--main-height) - 1.75rem);
+    --footer-height: 4rem;
 }
+
+
+/* Layout. */ 
 
 body {
     width: 100vw;
     height: 100vh;
-    padding: var(--perimeter-padding);
-    background-color: var(--bg-color);
+    padding: var(--body-padding);
+    position: relative;
 }
 
 header,
 footer { 
     z-index: 999;
 }
+
+footer { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2.5rem;
+    position: fixed;
+    left: 0;
+    bottom: var(--body-padding);
+    height: var(--footer-height);
+}
+
+footer > a > img { 
+    height: calc(0.7 * var(--footer-height));
+}
+
+
+/* Styles. */
+
+body {
+    background-color: var(--bg-color);
+}
+
+header,
+footer { 
+    background-color: none;
+}
+
+
+
+
+
+
 
 main,
 header {
@@ -135,14 +172,7 @@ main {
     height: var(--main-height);
 }
 
-footer { 
-    left: 0;
-    bottom: var(--perimeter-padding);
-    position: fixed;
-    height: var(--footer-height);
-    line-height: var(--footer-height);
-    font-size: max(1rem, min(1.3rem, 1.4vw));
-}
+
 
 h1 { 
     font-size: max(3vw, 3rem);
