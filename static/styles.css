@@ -73,6 +73,7 @@ a:active {
     --body-padding: 1.5rem;
     --header-height: 4rem;
     --footer-height: 4rem;
+    --main-height: calc(100vh - calc(2 * var(--body-padding) + var(--header-height) + var(--footer-height)));
 }
 
 
@@ -88,6 +89,31 @@ body {
 header,
 footer { 
     z-index: 999;
+}
+
+header,
+footer,
+main > div.banner { 
+    width: 100%;
+}
+
+header { 
+    height: var(--header-height);
+}
+
+main { 
+    height: auto;
+}
+
+main,
+main > div.banner {
+    min-height: var(--main-height);
+}
+
+main > div.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 footer { 
@@ -154,11 +180,11 @@ header {
     align-items: center;
 }
 
-main,
+/* main,
 header,
 header > ul {
     display: flex; 
-}
+}*/
 
 p,
 footer,
@@ -167,34 +193,30 @@ header > ul > li > a {
     font-family: 'Roboto', Helvetica, Sans-Serif;
 }
 
-header,
-footer,
-.banner { 
-    width: 100%;
-}
+
 
 footer,
 .banner { 
     text-align: center;
 }
 
-header { 
+/* header { 
     height: var(--header-height);
     justify-content: end;
     padding-inline: 3rem;
-}
+} */
 
-header > ul { 
+/* header > ul { 
     list-style: none;
     column-gap: 3.5rem;
     font-size: max(1.3rem, min(1.75rem, 1.75vw));
-}
+} */
 
-main { 
+/* main { 
     flex-direction: column;
     justify-content: center;
     height: var(--main-height);
-}
+} */
 
 
 
@@ -211,14 +233,12 @@ p {
     line-height: 3.2rem;
 }
 
-
-
 h1,
 p {
     color: var(--font-color);
 }
 
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
     p {
         font-size: 1.5rem;
         line-height: 3rem;
@@ -244,4 +264,4 @@ p {
         line-height: 2.4rem;
         max-width: 90%;
     }
-}
+} */
