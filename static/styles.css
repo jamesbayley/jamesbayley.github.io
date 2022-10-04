@@ -119,8 +119,32 @@ footer {
     background-color: none;
 }
 
+footer {
+    visibility: hidden; /* Hidden until page load, to avoid flash as icons re-position. */ 
+}
 
 
+/* Footer icon colors swap with theme. */
+
+@media (prefers-color-scheme: light) {
+    footer > a > img.light-theme { 
+        display: inline;
+    }
+
+    footer > a > img.dark-theme {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    footer > a > img.light-theme { 
+        display: none;
+    }
+
+    footer > a > img.dark-theme {
+        display: inline;
+    }
+}
 
 
 
