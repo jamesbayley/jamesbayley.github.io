@@ -38,7 +38,7 @@ a {
 /* Default font size for REM dimensions. */
 
 :root {
-    font-size: 10px;
+    font-size: 11px;
 }
 
 
@@ -52,18 +52,6 @@ p {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-}
-
-
-/* Anchor tag effects. */
-
-a:hover,
-a:focus { 
-    opacity: 0.6;
-}
-
-a:active { 
-    opacity: 0.4;
 }
 
 
@@ -101,6 +89,11 @@ header {
     height: var(--header-height);
 }
 
+header,
+main > div.banner {
+    text-align: center;
+}
+
 main { 
     height: auto;
 }
@@ -110,23 +103,26 @@ main > div.banner {
     min-height: var(--main-height);
 }
 
-main > div.banner {
+main > div.banner,
+footer { 
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+main > div.banner {
+    flex-direction: column;
 }
 
 footer { 
-    display: flex;
+    height: var(--footer-height);
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
     align-items: center;
     column-gap: 2.5rem;
     position: fixed;
-    left: 0;
     bottom: var(--body-padding);
-    height: var(--footer-height);
+    left: 0;
 }
 
 footer > a > img { 
@@ -140,14 +136,67 @@ body {
     background-color: var(--bg-color);
 }
 
-header,
-footer { 
-    background-color: none;
-}
-
 footer {
     visibility: hidden; /* Hidden until page load, to avoid flash as icons re-position. */ 
 }
+
+main > div.banner > h1 {
+    font-size: min(5vw, 5rem);
+    font-family: 'Fredericka the Great';
+}
+
+header > p { 
+    font-size: min(2.7vw, 1.4rem);
+}
+
+h1,
+p {
+    color: var(--font-color);
+}
+
+p { 
+    font-size: 1.4rem;
+    font-family: 'Roboto', Helvetica, Sans-Serif;
+}
+
+a:hover,
+a:focus { 
+    opacity: 0.6;
+}
+
+a:active { 
+    opacity: 0.4;
+}
+
+footer > a:hover > img {
+    transform: scale(1.1, 1.1);
+    transform-origin: center;
+    transition: transform linear 0.05s;
+}
+
+
+/* Banner appears to 'type' onto the screen. */
+
+main > div.banner > h1 { 
+    max-width: fit-content; /* Prevents caret from continuing to the screen edge. */
+    overflow: hidden; /* Hides characters that have not yet been 'typed'. */
+    white-space: nowrap; /* Ensures banner remains on a single line. */
+    padding-inline: 0.3rem; /* Space between final character and caret. */
+    border-right: .15em solid var(--primary-color); /* Simulates the caret. */
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 1s step-end infinite
+}
+
+@keyframes typing { 
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color); }
+  }
 
 
 /* Footer icon colors swap with theme. */
@@ -174,69 +223,13 @@ footer {
 
 
 
-
-main,
-header {
-    align-items: center;
-}
-
-/* main,
-header,
-header > ul {
-    display: flex; 
-}*/
-
-p,
-footer,
-header > ul > li > a { 
-    color: var(--font-color);
-    font-family: 'Roboto', Helvetica, Sans-Serif;
-}
-
-
-
-footer,
-.banner { 
-    text-align: center;
-}
-
-/* header { 
-    height: var(--header-height);
-    justify-content: end;
-    padding-inline: 3rem;
-} */
-
-/* header > ul { 
-    list-style: none;
-    column-gap: 3.5rem;
-    font-size: max(1.3rem, min(1.75rem, 1.75vw));
-} */
-
-/* main { 
-    flex-direction: column;
-    justify-content: center;
-    height: var(--main-height);
-} */
-
-
-
-h1 { 
-    font-size: max(3vw, 3rem);
-    font-family: 'Fredericka the Great';
-}
-
-p {
+/* p {
     max-width: 55vw;
     max-height: 95%;
     text-align: justify;
     font-size: 1.6rem;
     line-height: 3.2rem;
-}
-
-h1,
-p {
-    color: var(--font-color);
-}
+} */
 
 /* @media screen and (max-width: 900px) {
     p {
