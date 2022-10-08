@@ -12,7 +12,9 @@
 				"ritwickdey.liveserver"
 			],
 			"settings": {
-				"liveServer.settings.port": 8080
+				"liveServer.settings.port": 8080,
+				"liveServer.settings.root": "/static/",
+				"liveServer.settings.file": "index.html"
 			}
 		}
 	},

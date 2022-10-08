@@ -114,6 +114,15 @@ main > div.banner {
     flex-direction: column;
 }
 
+main > article { 
+    max-height: calc(var(--main-height) - 2rem);
+}
+
+main > article > p { 
+    margin-inline: auto;
+    max-width: 75rem;
+}
+
 footer { 
     height: var(--footer-height);
     flex-direction: row;
@@ -142,7 +151,23 @@ footer {
 
 main > div.banner > h1 {
     font-size: min(5vw, 5rem);
-    font-family: 'Fredericka the Great';
+    font-family: 'Fredericka the Great', Arial, Helvetica, sans-serif;
+}
+
+main > article { 
+    overflow-y: scroll;
+}
+
+main > article > p { 
+    text-align: justify;
+    line-height: 2.6rem;
+    padding-inline: 2rem;
+}
+
+header > h1 { 
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-weight: lighter;
+    font-size: 2.6rem;
 }
 
 header > p { 
@@ -220,41 +245,3 @@ main > div.banner > h1 {
         display: inline;
     }
 }
-
-
-
-/* p {
-    max-width: 55vw;
-    max-height: 95%;
-    text-align: justify;
-    font-size: 1.6rem;
-    line-height: 3.2rem;
-} */
-
-/* @media screen and (max-width: 900px) {
-    p {
-        font-size: 1.5rem;
-        line-height: 3rem;
-        max-width: 80%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    p {
-        font-size: 1.4rem;
-        line-height: 3rem;
-        max-width: 90%;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    header {
-        justify-content: end;
-    }
-
-    p {
-        font-size: 1.2rem;
-        line-height: 2.4rem;
-        max-width: 90%;
-    }
-} */
