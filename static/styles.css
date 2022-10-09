@@ -100,6 +100,7 @@ main {
     height: auto;
 }
 
+main,
 main > article,
 main > .blog-posts { 
     max-height: var(--main-height);
