@@ -44,11 +44,13 @@ a {
 
 /* Hide scrollbars across browsers. */ 
 
+main::-webkit-scrollbar,
 main > div.blog-posts::-webkit-scrollbar,
 main > article::-webkit-scrollbar {
     display: none;
 }
 
+main,
 main > div.blog-posts,
 main > article {
     overflow-y: scroll;
