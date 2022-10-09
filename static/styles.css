@@ -4,7 +4,6 @@
 
 :root {
     --primary-color: #E9AAC1;
-    --secondary-color: #FCEDD7;
 }
 
 @media (prefers-color-scheme: light) {
