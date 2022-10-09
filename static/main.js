@@ -5,5 +5,5 @@
 // a flash on the page. To mitigate against this, the footer
 // bar is hidden from view until the DOM is fully parsed.
 window.addEventListener('load', () => {
-    document.querySelector('footer')!.style.visibility = 'visible';
+    document.querySelector('footer').style.visibility = 'visible';
 })

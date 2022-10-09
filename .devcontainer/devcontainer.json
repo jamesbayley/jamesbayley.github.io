@@ -13,7 +13,7 @@
 			],
 			"settings": {
 				"liveServer.settings.port": 8080,
-				"liveServer.settings.root": "/static/",
+				// "liveServer.settings.root": "/",
 				"liveServer.settings.file": "index.html"
 			}
 		}
