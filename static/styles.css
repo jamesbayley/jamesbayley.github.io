@@ -81,6 +81,8 @@ body {
 header,
 footer { 
     z-index: 999;
+    position: fixed;
+    left: 0;
 }
 
 header,
@@ -100,6 +102,8 @@ main > div.banner {
 
 main { 
     height: auto;
+    position: relative;
+    top: var(--header-height);
 }
 
 main,
@@ -143,15 +147,21 @@ main > article > p {
     max-width: 75rem; /* Narrow column width for wide-screens. */
 }
 
+main > article { 
+    margin-top: 2rem;
+}
+
+header { 
+    top: var(--body-padding);
+}
+
 footer { 
     height: var(--footer-height);
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: end;
     column-gap: 2.5rem;
-    position: fixed;
     bottom: var(--body-padding);
-    left: 0;
 }
 
 footer > a > img { 
