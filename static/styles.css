@@ -75,9 +75,10 @@ article::-webkit-scrollbar,
     display: none;
 }
 
-p { 
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; /* Vertical overflow control on iOS. */
+#blog-posts > a,
+article > p { 
+    overflow-y: hidden;
+    /* -webkit-overflow-scrolling: scroll; */
 }
 
 
