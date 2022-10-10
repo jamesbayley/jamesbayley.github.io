@@ -142,13 +142,12 @@ header > div {
 
 article,
 #blog-posts { 
-    height: auto; /* Fits to content length. */
-    max-height: calc(var(--main-height) - var(--content-height-reduction)); /* Sets overflow limit. */
+    height: calc(var(--main-height) - var(--content-height-reduction)); /* Sets overflow limit. */
     top: calc(var(--content-height-reduction) / 2);
 }
 
 #banner {
-    min-height: var(--main-height); /* Required for central vertical alignment. */
+    height: var(--main-height); /* Required for central vertical alignment. */
     flex-direction: column;
     align-items: center; /* Horizontally centers the banner. */
 }
