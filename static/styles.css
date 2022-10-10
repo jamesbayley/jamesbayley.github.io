@@ -63,15 +63,15 @@
 
 /* Hide scrollbars across browsers. */ 
 
-#blog-posts,
-main > article {
+article,
+#blog-posts {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
 
-#blog-posts::-webkit-scrollbar,
-main > article::-webkit-scrollbar {
+article::-webkit-scrollbar,
+#blog-posts::-webkit-scrollbar {
     display: none;
 }
 
@@ -79,13 +79,14 @@ main > article::-webkit-scrollbar {
 /* Custom property declarations. */
 
 :root {
-    --header-height: 6rem;
-    --footer-height: 6rem;
+    --header-height: 7rem;
+    --footer-height: 7rem;
     --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+    --content-height-reduction: 2rem;
 }
 
 
-/* Core styling. */ 
+/* Core styles. */ 
 
 body {
     width: 100vw;
@@ -95,7 +96,7 @@ body {
 
 header,
 footer,
-main > div.banner { 
+#banner { 
     width: 100%;
 }
 
@@ -120,103 +121,51 @@ footer {
 }
 
 footer > a > img { 
-    height: calc(0.4 * var(--footer-height));
+    height: calc(0.35 * var(--footer-height)); /* Icons constrained to % of footer height. */
 }
 
 main { 
     position: relative;
-    top: var(--header-height);
+    top: var(--header-height); /* Offsets main to account for fixed header. */
     height: var(--main-height);
 }
 
 header,
-main > div.banner {
+#banner {
     text-align: center;
 }
 
-main > article,
+header > p,
+header > div { 
+    margin-block-start: 1rem; /* Offsets text from top-edge of screen. */
+}
+
+article,
 #blog-posts { 
-    max-height: var(--main-height); /* Sets limit for overflow. */
+    height: auto; /* Fits to content length. */
+    max-height: calc(var(--main-height) - var(--content-height-reduction)); /* Sets overflow limit. */
+    top: calc(var(--content-height-reduction) / 2);
 }
 
-main > div.banner {
-    min-height: var(--main-height);
+#banner {
+    min-height: var(--main-height); /* Required for central vertical alignment. */
     flex-direction: column;
-    align-items: center;
-}
-
-main > div.banner > h1 {
-    font-size: min(5vw, 5rem);
-}
-
-main > article > p { 
-    text-align: justify;
-    line-height: 2.6rem;
-    padding-inline: 2rem;
+    align-items: center; /* Horizontally centers the banner. */
 }
 
 footer,
-main > div.banner { 
+#banner { 
     display: flex;
     justify-content: center;
 }
 
-#blog-posts > a {
-    display: block;
+#banner > h1 {
+    font-size: min(5vw, 5rem);
 }
 
-#blog-posts > a > div > h5 { 
-    display: inline;
-}
-
-#blog-posts > a > div > h5:not(:last-child) { 
-    margin-right: 2rem; /* Add right-hand spacing between all h5 elements, except the last. */
-}
-
-#blog-posts > a,
-main > article > p { 
-    margin-inline: auto; /* Horizontal center alignment. */
-    max-width: 75rem; /* Narrow column width for wide-screens. */
-}
-
-header > h2 { 
-    font-size: 1.7rem;
-    margin-block: 0.5rem;
-    display: inline-block;
-    border-top: 0.1rem solid var(--primary-color);
-}
-
-header > h1,
-header > h2,
-#blog-posts h3,
-#blog-posts h4,  
-#blog-posts h5 {
-    font-weight: lighter;
-}
-
-header > h1 { 
-    font-size: 2.6rem;
-}
-
-header > p { 
-    font-size: min(2.7vw, 1.4rem);
-}
-
-h1,
-#blog-posts > a > h3 { 
-    font-family: 'Fredericka the Great', Arial, Helvetica, Sans-Serif;
-}
-
-#blog-posts > a:not(:last-child) { 
-    padding-block: 1rem;
-    border-bottom: 0.1rem solid var(--primary-color);
-    margin-block-end: 0.75rem;
-}
-
-p,
-h2,
-#blog-posts > a {
-    font-family: 'Roboto', Helvetica, Sans-Serif;
+article,
+#blog-posts { 
+    padding-inline: 3rem; /* Adds space either side of page content. */
 }
 
 h1,
@@ -226,30 +175,96 @@ p,
     color: var(--font-color);
 }
 
+h1,
+h2,
+h3,
+h4,  
+h5 {
+    font-weight: lighter;
+}
+
+h1,
+#blog-posts h3 { 
+    font-family: 'Fredericka the Great', Arial, Helvetica, Sans-Serif;
+}
+
 p,
-#blog-posts > a > div > h5 { 
-    font-size: 1.4rem;
+h2,
+#blog-posts > a {
+    font-family: 'Roboto', Helvetica, Sans-Serif;
 }
 
-#blog-posts > a > h3 { 
-    font-size: 2rem;
+header h2,
+#blog-posts h4, 
+#blog-posts h5 { 
+    font-variant-caps: all-small-caps;
 }
 
-#blog-posts > a > h4 { 
-    font-size: 1.6rem;
+header h1 { 
+    font-size: 2.6rem;
 }
 
-#blog-posts > a > p { 
-    line-height: 1.8rem;
-    font-size: 1.3rem;
-    margin-block-start: 0.75rem;
+header h2 { 
+    font-size: 1.7rem;
+    margin-block: 0.5rem; /* Vertical spacing between sub-title and title. */
+    display: inline-block;
+    border-top: 0.1rem solid var(--primary-color); /* Horizontal rule between title & sub-title. */
+}
+
+header > p { 
+    font-size: min(2.7vw, 1.4rem);
+}
+
+article p,
+#blog-posts p {
     text-align: justify;
 }
 
-header > h2,
-#blog-posts h4, 
-#blog-posts > a > div > h5 { 
-    font-variant-caps: all-small-caps;
+article > p { 
+    line-height: 2.6rem;
+}
+
+p,
+#blog-posts h5 { 
+    font-size: 1.4rem;
+}
+
+#blog-posts h3 { 
+    font-size: 2rem;
+}
+
+#blog-posts h4 { 
+    font-size: 1.6rem;
+}
+
+#blog-posts p { 
+    line-height: 1.8rem;
+    font-size: 1.3rem;
+    margin-block-start: 0.75rem;
+}
+
+#blog-posts > a {
+    display: block;
+}
+
+#blog-posts h5 { 
+    display: inline;
+}
+
+#blog-posts h5:not(:last-child) { 
+    margin-right: 2rem; /* Add right-hand spacing between all h5 elements, except last. */
+}
+
+article > p,
+#blog-posts > a { 
+    margin-inline: auto; /* Horizontal center alignment. */
+    max-width: 75rem; /* Narrow column width for wide-screens. */
+}
+
+#blog-posts > a:not(:last-child) { 
+    padding-block-end: 1rem;
+    border-bottom: 0.1rem solid var(--primary-color); /* Underline blog post links, except last. */
+    margin-block-end: 0.75rem;
 }
 
 a {
@@ -274,7 +289,7 @@ footer > a:hover > img {
 
 /* Banner appears to 'type' onto the screen. */
 
-main > div.banner > h1 { 
+#banner > h1 { 
     max-width: fit-content; /* Prevents caret from continuing to the screen edge. */
     overflow: hidden; /* Hides characters that have not yet been 'typed'. */
     white-space: nowrap; /* Ensures banner remains on a single line. */
