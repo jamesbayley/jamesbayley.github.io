@@ -173,6 +173,7 @@ footer,
 article,
 #blog-posts { 
     padding-inline: 3rem; /* Adds space either side of page content. */
+    padding-block-end: 3rem; /* Prevent footer overlapping content on iOS. */
 }
 
 h1,
