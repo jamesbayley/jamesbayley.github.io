@@ -1,7 +1,3 @@
-const header = document.querySelector('header');
-const footer = document.querySelector('footer');
-const main = document.querySelector('main');
-
 // Since there are two copies of each icon in the footer 
 // so that the correct icon can be rendered after the color
 // theme is determined, sometimes the page can load before 
@@ -13,21 +9,20 @@ window.addEventListener('load', () => {
 })
 
 // iOS Safari's toolbar affects the viewport dimensions for the
-// screen. 100vh is initially set assuming that the toolbar is
-// hidden. However, if the toolbar is displayed then the main
-// content of the window is smaller than expected. This negatively
-// impacts the layout and visibility of elements on screen.
-// Accordingly, vh must be recalculated everytime vh changes.
-//
-// The resize event must be called immediately on page load, so that
-// the initial dimensions of the iOS toolbar can be accounted for.
-// Subsequent re-sizings are automatically detected by the 'onresize'
-// event listener.
-function updateMainHeight() {
+// screen: 100vh is initially set assuming that the toolbar is
+// hidden. However, if the toolbar is displayed then the <main>
+// content of the window is larger than the available viewport.
+// This negatively impacts the layout and visibility of elements.
+// Accordingly, the height of the <main> element must be recalculated 
+// immediately on page load and then again everytime that vh changes.
+function setMainElementHeight() {
+    const main = document.querySelector('main');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
     const headerHeight = header.getBoundingClientRect().height;
     const footerHeight = footer.getBoundingClientRect().height;
     main.style.height = `${window.innerHeight - headerHeight - footerHeight}px`;
 }
 
-window.addEventListener('resize', updateMainHeight);
-window.addEventListener('load', updateMainHeight);
+window.addEventListener('load', setMainElementHeight);
+window.addEventListener('resize', setMainElementHeight);
