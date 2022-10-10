@@ -131,11 +131,14 @@ footer > a > img {
     height: calc(0.25 * var(--footer-height)); /* Icons constrained to % of footer height. */
 }
 
-main,
+main {
+    height: var(--main-height);
+}
+
 article,
 #banner,
-#blog-posts {
-    height: var(--main-height);
+#blog-posts { 
+    height: inherit; /* Updates automatically if <main> height re-computed. */
 }
 
 main,
