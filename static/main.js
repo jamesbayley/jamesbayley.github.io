@@ -24,9 +24,9 @@ window.addEventListener('load', () => {
 // Subsequent re-sizings are automatically detected by the 'onresize'
 // event listener.
 function updateMainHeight() {
-    const headerHeight = header.style.height;
-    const footerHeight = footer.style.height;
-    main.style.height = window.innerHeight - headerHeight - footerHeight;
+    const headerHeight = header.getBoundingClientRect().height;
+    const footerHeight = footer.getBoundingClientRect().height;
+    main.style.height = `${window.innerHeight - headerHeight - footerHeight}px`;
 }
 
 window.addEventListener('resize', updateMainHeight);
