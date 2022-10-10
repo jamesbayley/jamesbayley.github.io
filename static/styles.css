@@ -21,16 +21,36 @@
 }
 
 
+/* Footer icon colors swap with theme. */
+
+@media (prefers-color-scheme: light) {
+    footer > a > img.light-theme { 
+        display: inline;
+    }
+
+    footer > a > img.dark-theme {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    footer > a > img.light-theme { 
+        display: none;
+    }
+
+    footer > a > img.dark-theme {
+        display: inline;
+    }
+}
+
+
 /* CSS resets. */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
+    position: relative;
 }
 
 
@@ -43,45 +63,34 @@ a {
 
 /* Hide scrollbars across browsers. */ 
 
-main::-webkit-scrollbar,
-main > div.blog-posts::-webkit-scrollbar,
-main > article::-webkit-scrollbar {
-    display: none;
-}
-
-main,
-main > div.blog-posts,
+#blog-posts,
 main > article {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
 
+#blog-posts::-webkit-scrollbar,
+main > article::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* Custom property declarations. */
 
 :root {
-    --body-padding: 1.5rem;
     --header-height: 6rem;
     --footer-height: 6rem;
-    --main-height: calc(100vh - calc(2 * var(--body-padding) + var(--header-height) + var(--footer-height)));
+    --main-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 
-/* Layout. */ 
+/* Core styling. */ 
 
 body {
     width: 100vw;
     height: 100vh;
-    padding: var(--body-padding);
-    position: relative;
-}
-
-header,
-footer { 
-    z-index: 999;
-    position: fixed;
-    left: 0;
+    background-color: var(--bg-color);
 }
 
 header,
@@ -90,8 +99,34 @@ main > div.banner {
     width: 100%;
 }
 
+header,
+footer { 
+    z-index: 999;
+    position: fixed;
+}
+
 header { 
-    min-height: var(--header-height);
+    height: var(--header-height);
+}
+
+footer { 
+    visibility: hidden; /* Hidden until page load, to avoid flash as icons re-position. */ 
+    height: var(--footer-height);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    column-gap: 2.5rem;
+    bottom: 0;
+}
+
+footer > a > img { 
+    height: calc(0.4 * var(--footer-height));
+}
+
+main { 
+    position: relative;
+    top: var(--header-height);
+    height: var(--main-height);
 }
 
 header,
@@ -99,88 +134,15 @@ main > div.banner {
     text-align: center;
 }
 
-main { 
-    height: auto;
-    position: relative;
-    top: var(--header-height);
-}
-
-main,
 main > article,
-main > .blog-posts { 
-    max-height: var(--main-height);
+#blog-posts { 
+    max-height: var(--main-height); /* Sets limit for overflow. */
 }
 
-main,
-main > div.blog-posts,
 main > div.banner {
     min-height: var(--main-height);
-}
-
-main > div.banner {
     flex-direction: column;
     align-items: center;
-}
-
-main > div.banner,
-footer { 
-    display: flex;
-    justify-content: center;
-}
-
-main > div.blog-posts > a {
-    display: block;
-}
-
-main > div.blog-posts > a > div > h5 { 
-    display: inline;
-}
-
-main > div.blog-posts > a > div > h5:not(:last-child) { 
-    margin-right: 2rem;
-}
-
-main > div.blog-posts > a,
-main > article > p { 
-    margin-inline: auto; /* Horizontal center alignment. */
-    max-width: 75rem; /* Narrow column width for wide-screens. */
-}
-
-main > article { 
-    margin-top: 2rem;
-}
-
-header { 
-    top: var(--body-padding);
-}
-
-footer { 
-    height: var(--footer-height);
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: end;
-    column-gap: 2.5rem;
-    bottom: var(--body-padding);
-}
-
-footer > a > img { 
-    height: calc(0.4 * var(--footer-height));
-}
-
-header > h2 { 
-    margin-block: 0.5rem;
-    display: inline-block;
-}
-
-
-/* Styles. */
-
-body {
-    background-color: var(--bg-color);
-}
-
-footer {
-    visibility: hidden; /* Hidden until page load, to avoid flash as icons re-position. */ 
 }
 
 main > div.banner > h1 {
@@ -193,11 +155,42 @@ main > article > p {
     padding-inline: 2rem;
 }
 
+footer,
+main > div.banner { 
+    display: flex;
+    justify-content: center;
+}
+
+#blog-posts > a {
+    display: block;
+}
+
+#blog-posts > a > div > h5 { 
+    display: inline;
+}
+
+#blog-posts > a > div > h5:not(:last-child) { 
+    margin-right: 2rem; /* Add right-hand spacing between all h5 elements, except the last. */
+}
+
+#blog-posts > a,
+main > article > p { 
+    margin-inline: auto; /* Horizontal center alignment. */
+    max-width: 75rem; /* Narrow column width for wide-screens. */
+}
+
+header > h2 { 
+    font-size: 1.7rem;
+    margin-block: 0.5rem;
+    display: inline-block;
+    border-top: 0.1rem solid var(--primary-color);
+}
+
 header > h1,
 header > h2,
-main > div.blog-posts > a > h3,
-main > div.blog-posts > a > h4,  
-main > div.blog-posts > a > div > h5 {
+#blog-posts h3,
+#blog-posts h4,  
+#blog-posts h5 {
     font-weight: lighter;
 }
 
@@ -205,21 +198,16 @@ header > h1 {
     font-size: 2.6rem;
 }
 
-header > h2 { 
-    font-size: 1.7rem;
-    border-top: 0.1rem solid var(--primary-color);
-}
-
 header > p { 
     font-size: min(2.7vw, 1.4rem);
 }
 
 h1,
-main > div.blog-posts > a > h3 { 
+#blog-posts > a > h3 { 
     font-family: 'Fredericka the Great', Arial, Helvetica, Sans-Serif;
 }
 
-main > div.blog-posts > a:not(:last-child) { 
+#blog-posts > a:not(:last-child) { 
     padding-block: 1rem;
     border-bottom: 0.1rem solid var(--primary-color);
     margin-block-end: 0.75rem;
@@ -227,31 +215,31 @@ main > div.blog-posts > a:not(:last-child) {
 
 p,
 h2,
-main > div.blog-posts > a {
+#blog-posts > a {
     font-family: 'Roboto', Helvetica, Sans-Serif;
 }
 
 h1,
 h2, 
 p,
-main > .blog-posts > a {
+#blog-posts > a {
     color: var(--font-color);
 }
 
 p,
-main > div.blog-posts > a > div > h5 { 
+#blog-posts > a > div > h5 { 
     font-size: 1.4rem;
 }
 
-main > div.blog-posts > a > h3 { 
+#blog-posts > a > h3 { 
     font-size: 2rem;
 }
 
-main > div.blog-posts > a > h4 { 
+#blog-posts > a > h4 { 
     font-size: 1.6rem;
 }
 
-main > div.blog-posts > a > p { 
+#blog-posts > a > p { 
     line-height: 1.8rem;
     font-size: 1.3rem;
     margin-block-start: 0.75rem;
@@ -259,9 +247,13 @@ main > div.blog-posts > a > p {
 }
 
 header > h2,
-main > div.blog-posts > a > h4, 
-main > div.blog-posts > a > div > h5 { 
+#blog-posts h4, 
+#blog-posts > a > div > h5 { 
     font-variant-caps: all-small-caps;
+}
+
+a {
+    text-decoration: none;
 }
 
 a:hover,
@@ -274,7 +266,7 @@ a:active {
 }
 
 footer > a:hover > img {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1); /* Icons enlarge on hover. */
     transform-origin: center;
     transition: transform linear 0.05s;
 }
@@ -302,26 +294,3 @@ main > div.banner > h1 {
     from, to { border-color: transparent }
     50% { border-color: var(--primary-color); }
   }
-
-
-/* Footer icon colors swap with theme. */
-
-@media (prefers-color-scheme: light) {
-    footer > a > img.light-theme { 
-        display: inline;
-    }
-
-    footer > a > img.dark-theme {
-        display: none;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    footer > a > img.light-theme { 
-        display: none;
-    }
-
-    footer > a > img.dark-theme {
-        display: inline;
-    }
-}
