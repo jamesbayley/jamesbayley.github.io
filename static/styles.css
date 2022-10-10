@@ -82,7 +82,6 @@ article::-webkit-scrollbar,
     --header-height: 8rem;
     --footer-height: 8rem;
     --main-height: calc(100vh - var(--header-height) - var(--footer-height));
-    --content-height-reduction: 2rem;
 }
 
 
