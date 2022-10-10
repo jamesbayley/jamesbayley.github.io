@@ -67,6 +67,7 @@ article,
 #blog-posts {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
+    -webkit-overflow-scrolling: touch; /* Vertical overflow control on iOS. */
     scrollbar-width: none; /* Firefox */
 }
 
