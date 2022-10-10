@@ -13,5 +13,12 @@ window.addEventListener('load', () => {
 // hidden. However, if the toolbar is displayed then the main
 // content of the window is smaller than expected. This negatively
 // impacts the layout and visibility of elements on screen. 
-// Accordingly, vh must be recalculated when the viewport changes.
-window.onresize = () => document.body.height = window.innerHeight;
+// Accordingly, vh must be recalculated everytime vh changes.
+const updateViewportHeight = () => document.body.height = window.innerHeight;
+window.addEventListener('resize', () => updateViewportHeight);
+
+// The resize event must be called immediately on page load, so that 
+// the initial dimensions of the iOS toolbar can be accounted for.
+// Subsequent re-sizings are automatically detected by the 'onresize'
+// event listener.
+window.addEventListener('load', updateViewportHeight);
