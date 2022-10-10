@@ -136,6 +136,7 @@ article,
 #banner,
 #blog-posts {
     height: var(--main-height);
+    height: -webkit-fill-available; /* iOS override to correct viewport height. */
 }
 
 main,
