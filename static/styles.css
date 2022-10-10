@@ -77,7 +77,7 @@ article::-webkit-scrollbar,
 
 #blog-posts > a,
 article > p { 
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /* -webkit-overflow-scrolling: scroll; */
 }
 
@@ -97,6 +97,11 @@ article > p {
 body {
     width: 100vw;
     height: 100vh;
+}
+
+body,
+header,
+footer { 
     background-color: var(--bg-color);
 }
 
